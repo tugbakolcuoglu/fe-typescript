@@ -5,10 +5,9 @@ import type { Todo } from "../types/types";
 type Props = {
    todos: Todo[];
    loading: boolean;
-}
+};
 
 const TodoList = ({ todos, loading }: Props) => {
-
    const { refetchTodos } = useTodo();
 
    const handleDeleteTodo = async (id: string) => {
@@ -132,22 +131,24 @@ const TodoList = ({ todos, loading }: Props) => {
       }
    };
 
-
    if (loading) {
       return (
          <div className="empty-state">
             <h3>Loading...</h3>
             <p>Görevler yükleniyor.</p>
          </div>
-      )
-   } else if (todos.length === 0) {
+      );
+   }
+
+   if (todos.length === 0) {
       return (
          <div className="empty-state">
             <h3>No tasks here yet 👀</h3>
-            <p>Bu sekmede henüz görev bulunmuyor.</p>
+            <p>Bu sayfada henüz görev bulunmuyor.</p>
          </div>
-      )
+      );
    }
+
    return (
       <div className="todo-list">
          {todos.map((todo) => (
@@ -161,7 +162,7 @@ const TodoList = ({ todos, loading }: Props) => {
             </div>
          ))}
       </div>
-   )
-}
+   );
+};
 
-export default TodoList
+export default TodoList;

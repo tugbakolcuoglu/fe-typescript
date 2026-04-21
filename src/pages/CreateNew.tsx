@@ -3,20 +3,14 @@ import { addTodoAsync } from "../api/apiCalls";
 import { useTodo } from "../context/TodoContext";
 import type { Todo } from "../types/types";
 
-
 const CreateNew = () => {
    const { todos, refetchTodos, loading: todosLoading } = useTodo();
 
-
    const [title, setTitle] = useState<string>("");
    const [description, setDescription] = useState<string>("");
-
-   const [addTodoLoading, setAddTodoLoading] = useState<boolean>(todosLoading);
-
+   const [addTodoLoading, setAddTodoLoading] = useState<boolean>(false);
 
    const loading = addTodoLoading || todosLoading;
-
-
 
    const handleAddTodo = async () => {
       if (title.trim() === "" || description.trim() === "") {
@@ -48,35 +42,47 @@ const CreateNew = () => {
          setAddTodoLoading(false);
       }
    };
+
    return (
-      <div className="form-card">
-         <h2>Add New Task</h2>
+      <div className="app-container">
+         <div className="container">
+            <section className="page-header">
+               <h1>Add New Task</h1>
+               <p>Yeni görevlerini buradan sisteme ekleyebilirsin.</p>
+            </section>
 
-         <div className="input-group">
-            <input
-               type="text"
-               disabled={loading}
-               placeholder="Task Title..."
-               value={title}
-               onChange={(e) => setTitle(e.target.value)}
-            />
+            <div className="form-card">
+               <div className="input-group">
+                  <input
+                     type="text"
+                     disabled={loading}
+                     placeholder="Task Title..."
+                     value={title}
+                     onChange={(e) => setTitle(e.target.value)}
+                  />
 
-            <textarea
-               placeholder="Task Description..."
-               value={description}
-               onChange={(e) => setDescription(e.target.value)}
-               rows={4}
-               disabled={loading}
-            />
+                  <textarea
+                     placeholder="Task Description..."
+                     value={description}
+                     onChange={(e) => setDescription(e.target.value)}
+                     rows={5}
+                     disabled={loading}
+                  />
 
-            <button className="add-btn" onClick={handleAddTodo} disabled={loading}>
-               ➕ Add Task
-            </button>
+                  <button
+                     className="add-btn"
+                     onClick={handleAddTodo}
+                     disabled={loading}
+                  >
+                     ➕ Add Task
+                  </button>
+               </div>
+
+               <h3>Toplam Todo Sayısı = {todos.length}</h3>
+            </div>
          </div>
-
-         <h3>Toplam Todo Sayisi= {todos.length}</h3>
       </div>
-   )
-}
+   );
+};
 
-export default CreateNew
+export default CreateNew;
