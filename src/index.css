@@ -5,13 +5,13 @@
 }
 
 :root {
-  --bg-main: linear-gradient(135deg, #eef2ff, #dbeafe, #e0e7ff);
+  --bg-main: linear-gradient(135deg, #eef2ff, #dbeafe, #e0e7ff); 
   --text-main: #111827;
   --text-soft: #4b5563;
   --border-color: rgba(17, 24, 39, 0.08);
   --card-bg: rgba(255, 255, 255, 0.78);
   --nav-bg: rgba(255, 255, 255, 0.72);
-  --primary: #7c5cff;
+  --primary: #7c5cff; 
   --primary-2: #5b8cff;
   --success: #22c55e;
   --danger: #ef4444;
